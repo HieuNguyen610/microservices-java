@@ -24,6 +24,7 @@ public class Account {
     String username;
 
     @ElementCollection
-    @CollectionTable(name = "users_roles", joinColumns = @JoinColumn(name = "account_id"))
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "role")
     Set<String> roles;
 }

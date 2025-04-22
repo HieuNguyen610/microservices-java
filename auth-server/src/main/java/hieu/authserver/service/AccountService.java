@@ -23,8 +23,12 @@ public class AccountService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("Username not found"));
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        account.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role)));
+        authorities.add(new SimpleGrantedAuthority("USER"));
 
         return new User(account.getUsername(), account.getPassword(), authorities);
+    }
+
+    public void createUser(Account user) {
+
     }
 }
