@@ -20,6 +20,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -57,7 +58,7 @@ import java.util.stream.Collectors;
 @EnableMethodSecurity(jsr250Enabled = true, prePostEnabled = true, securedEnabled = true)
 public class ServerSecurityConfig {
 
-    private final AccountService accountService;
+    private final UserDetailsService accountService;
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
